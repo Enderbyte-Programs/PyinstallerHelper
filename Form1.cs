@@ -6,16 +6,20 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace PyinstallerHelper
 {
     public partial class Form1 : Form
     {
+        public PYIHPWrapper pinfo = PYIHPWrapper.Blank();
         public Form1()
         {
+            this.KeyPreview = true;
             InitializeComponent();
             button2.Hide();
             textBox2.Hide();
@@ -35,6 +39,13 @@ namespace PyinstallerHelper
             textBox9.Enabled = checkBox2.Checked;
             textBox10.Enabled = checkBox2.Checked;
             textBox11.Enabled = checkBox2.Checked;
+            foreach (Control c in Controls)
+            {
+                c.Click += Form1_Click;
+                c.TextChanged += Form1_Click;
+            }
+            pinfo.LastSave = new PyinstallerHelperProject(this);
+            pinfo.UpdateTitle(this);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -98,7 +109,7 @@ namespace PyinstallerHelper
         }
         public string BuildCompileCommand(string tempdir)
         {
-            string command = $"pyinstaller --log-level=DEBUG --noconfirm --workpath={tempdir} --distpath=\"{textBox3.Text}\"";
+            string command = $"pyinstaller --log-level=INFO --noconfirm --workpath={tempdir} --distpath=\"{textBox3.Text}\" --specpath={tempdir}";
             if (!File.Exists(textBox1.Text))
             {
                 MessageBox.Show("You must specify a Python file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -202,6 +213,107 @@ namespace PyinstallerHelper
             if (textBox11.Text.Equals("") || textBox6.Text.Contains(textBox11.Text))
             {
                 textBox11.Text = textBox6.Text;
+            }
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var tproject = new PyinstallerHelperProject(this);
+            var s = new SaveFileDialog();
+            s.Title = "Save Project";
+            s.Filter = "Pyinstaller Helper Project|*.pyp|All Files|*.*";
+            s.ShowDialog(this);
+            if (s.FileName is null  || s.FileName.Length == 0) { return; } else
+            {
+                pinfo = new PYIHPWrapper(s.FileName, tproject);
+                File.WriteAllText(s.FileName, tproject.OutToXML());
+                pinfo.UpdateTitle(this);
+            }
+        }
+        public void LoadFile(string filename)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(PyinstallerHelperProject));
+
+            PyinstallerHelperProject p = new PyinstallerHelperProject();
+            try
+            {
+                var fs = new FileStream(filename, FileMode.Open);
+                p = (PyinstallerHelperProject)serializer.Deserialize(fs);
+                fs.Close();
+            } catch
+            {
+                MessageBox.Show("Project is corrupt!", "Failed to load project", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            pinfo = new PYIHPWrapper(filename, p);
+            p.WriteControls(this);
+            pinfo.UpdateTitle(this);
+            
+        }
+
+        private void Form1_Click(object sender, EventArgs e)
+        {
+            pinfo.UpdateTitle(this);
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pinfo.FullPath.Equals(""))
+            {
+                saveAsToolStripMenuItem_Click(sender, e);
+            } else
+            {
+                var tproject = new PyinstallerHelperProject(this);
+                pinfo.LastSave = tproject;
+                File.WriteAllText(pinfo.FullPath, tproject.OutToXML());
+                pinfo.UpdateTitle(this);
+            }
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            //MessageBox.Show("sdf");
+            
+            if (e.Control)
+            {
+                if (e.KeyCode == Keys.N)
+                {
+                    newToolStripMenuItem_Click(sender, e);
+                } else if (e.KeyCode == Keys.S)
+                {
+                    saveToolStripMenuItem_Click(sender, e);
+                }
+            }
+            pinfo.UpdateTitle(this);
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Open File";
+            ofd.Filter = "Pyinstaller Helper Project|*.pyp";
+            ofd.Multiselect = false;
+            ofd.ShowDialog();
+            if (ofd.FileName == null || ofd.FileName.Length == 0)
+            {
+                return;
+            } else
+            {
+                LoadFile(ofd.FileName);
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (pinfo.NeedsSaving(this))
+            {
+                var d = MessageBox.Show("Unsaved project. Would you like to save?","Question",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Warning);
+                if (d == DialogResult.Yes)
+                {
+                    File.WriteAllText(pinfo.FullPath, new PyinstallerHelperProject(this).OutToXML());
+                } else if (d == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
             }
         }
     }
