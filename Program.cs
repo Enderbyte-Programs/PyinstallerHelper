@@ -65,7 +65,41 @@ namespace PyinstallerHelper
                 return inv;
             }
         }
-        
+        public static bool ExistsOnPath(string fileName)
+        {
+            return GetFullPath(fileName) != null;
+        }
+
+        public static string GetFullPath(string fileName)
+        {
+            if (File.Exists(fileName))
+                return Path.GetFullPath(fileName);
+
+            var values = Environment.GetEnvironmentVariable("PATH");
+            foreach (var path in values.Split(';'))
+            {
+                var fullPath = Path.Combine(path, fileName);
+                if (File.Exists(fullPath))
+                    return fullPath;
+            }
+            return null;
+        }
+        public static DialogResult RunGUICommand(string fullcommand,int expectedlines,string title,Form parent)
+        {
+            VerboseCommandExecutorForm vcf = new VerboseCommandExecutorForm();
+            string[] splcommand = CLISplit.SplitCommandLine(fullcommand).ToArray();
+            string cmdhead = splcommand[0];
+            string[] finall = new string[splcommand.Length - 1];
+            splcommand.ToList().CopyTo(1,finall,0, splcommand.Length-2);
+            string cmdargs = string.Join(" ", finall);
+            vcf.EFile = cmdhead;
+            vcf.EArgs = cmdargs;
+            vcf.Title = title;
+            vcf.ExpectedLines = expectedlines;
+            return vcf.ShowDialog(parent);
+
+        }
+
     }
     public class PyinstallerHelperProject
     {

@@ -82,7 +82,14 @@ namespace PyinstallerHelper
             p.StartInfo.CreateNoWindow = true;
             p.OutputDataReceived += OnInputRecv;
             p.ErrorDataReceived += OnInputRecv;
-            p.Start();
+            try
+            {
+                p.Start();
+            } catch
+            {
+                MessageBox.Show("You do not appear to have pyinstaller installed. Please go to Options -> Pyinstaller to fix this.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             p.BeginOutputReadLine();
             p.BeginErrorReadLine();
             
