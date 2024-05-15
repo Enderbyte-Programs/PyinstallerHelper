@@ -2,9 +2,9 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Pyinstaller Helper"
-#define MyAppVersion "1.2"
+#define MyAppVersion "1.4.1"
 #define MyAppPublisher "Enderbyte Programs"
-#define MyAppURL "https://enderbyteprograms.weebly.com/"
+#define MyAppURL "https://github.com/Enderbyte-Programs/Pyinstallerhelper"
 #define MyAppExeName "PyinstallerHelper.exe"
 #define MyAppAssocName MyAppName + " Project"
 #define MyAppAssocExt ".pyp"
@@ -25,14 +25,15 @@ DefaultDirName={autopf}\{#MyAppName}
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
-;PrivilegesRequired=lowest
-PrivilegesRequiredOverridesAllowed=dialog
+PrivilegesRequired=lowest
+PrivilegesRequiredOverridesAllowed=commandline
 OutputDir=C:\Users\jorda\source\repos\PyinstallerHelper
-OutputBaseFilename=pyinstallerhelper-1.2-setup
+OutputBaseFilename=pyinstallerhelper-1.4.1-setup
 SetupIconFile=C:\Users\jorda\source\repos\PyinstallerHelper\1215332-removebg-preview.ico
-Compression=lzma
-SolidCompression=yes
+Compression=zip
+;SolidCompression=yes
 WizardStyle=modern
+UninstallDisplayIcon={app}\PyinstallerHelper.exe
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -42,6 +43,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "C:\Users\jorda\source\repos\PyinstallerHelper\bin\Debug\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\jorda\source\repos\PyinstallerHelper\1215332-removebg-preview.ico"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
@@ -49,7 +51,7 @@ Root: HKA; Subkey: "Software\Classes\{#MyAppAssocExt}\OpenWithProgids"; ValueTyp
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}"; ValueType: string; ValueName: ""; ValueData: "{#MyAppAssocName}"; Flags: uninsdeletekey
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\{#MyAppExeName},0"
 Root: HKA; Subkey: "Software\Classes\{#MyAppAssocKey}\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
-Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".myp"; ValueData: ""
+Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes"; ValueType: string; ValueName: ".pyp"; ValueData: ""
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
