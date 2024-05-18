@@ -39,6 +39,7 @@ namespace PyinstallerHelper
             textBox9.Enabled = checkBox2.Checked;
             textBox10.Enabled = checkBox2.Checked;
             textBox11.Enabled = checkBox2.Checked;
+            textBox3.Text = Constants.DistPath;
             foreach (Control c in Controls)
             {
                 c.Click += Form1_Click;
@@ -320,6 +321,44 @@ namespace PyinstallerHelper
         private void pyinstallerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new PyinstallerSetting().ShowDialog(this);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Routines.OpenFolder(textBox3.Text);
+        }
+
+        private void generateCommandOnlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            string data;
+            try
+            {
+                data = BuildCompileCommand(Routines.GenerateNewTempdir());
+            } catch
+            {
+                return;
+            }
+            TextBoxDisplay cmd = new TextBoxDisplay();
+            cmd.data = data;
+            cmd.SetTitle("Pyinstaller command");
+            cmd.ShowDialog();
+
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Pyinstaller Helper Version {FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetEntryAssembly().Location).FileVersion}. This software is (c) 2024 Enderbyte Programs, Some rights reserved.");
+        }
+
+        private void whatsNewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"What's New this version?\n- Fix bug where everything is unsaved\n- Add button to open output directory\n- Add option to generate command only");
+        }
+
+        private void reportABugToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/Enderbyte-Programs/PyinstallerHelper/issues/new/choose");
         }
     }
 }

@@ -69,6 +69,18 @@
     <Compile Include="PyinstallerSetting.Designer.cs">
       <DependentUpon>PyinstallerSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="PythonSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PythonSettings.Designer.cs">
+      <DependentUpon>PythonSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TextBoxDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextBoxDisplay.Designer.cs">
+      <DependentUpon>TextBoxDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="VerboseCommandExecutorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +105,12 @@
     <EmbeddedResource Include="PyinstallerSetting.resx">
       <DependentUpon>PyinstallerSetting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PythonSettings.resx">
+      <DependentUpon>PythonSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextBoxDisplay.resx">
+      <DependentUpon>TextBoxDisplay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VerboseCommandExecutorForm.resx">
       <DependentUpon>VerboseCommandExecutorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +132,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>C:\Users\jorda\source\repos\VersionUpdateAuto\bin\Debug\VersionUpdateAuto.exe C:\Users\jorda\source\repos\PyinstallerHelper</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

@@ -70,7 +70,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,6 +83,14 @@
             this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button4 = new System.Windows.Forms.Button();
+            this.toEXEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateCommandOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportABugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whatsNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -291,6 +298,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.textBox3);
@@ -501,15 +509,6 @@
             this.tabControl1.Size = new System.Drawing.Size(765, 856);
             this.tabControl1.TabIndex = 0;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(258, 915);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(187, 25);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Pyinstaller Helper ";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
@@ -517,10 +516,11 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.optionsToolStripMenuItem,
-            this.projectToolStripMenuItem});
+            this.projectToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(765, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(765, 40);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -533,7 +533,7 @@
             this.saveAsToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(71, 38);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(71, 36);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newToolStripMenuItem
@@ -582,21 +582,21 @@
             this.pythonToolStripMenuItem,
             this.pyinstallerToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(118, 38);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(118, 36);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
             // pythonToolStripMenuItem
             // 
             this.pythonToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pythonToolStripMenuItem.Image")));
             this.pythonToolStripMenuItem.Name = "pythonToolStripMenuItem";
-            this.pythonToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.pythonToolStripMenuItem.Size = new System.Drawing.Size(255, 44);
             this.pythonToolStripMenuItem.Text = "Python";
             // 
             // pyinstallerToolStripMenuItem
             // 
             this.pyinstallerToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pyinstallerToolStripMenuItem.Image")));
             this.pyinstallerToolStripMenuItem.Name = "pyinstallerToolStripMenuItem";
-            this.pyinstallerToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.pyinstallerToolStripMenuItem.Size = new System.Drawing.Size(255, 44);
             this.pyinstallerToolStripMenuItem.Text = "Pyinstaller";
             this.pyinstallerToolStripMenuItem.Click += new System.EventHandler(this.pyinstallerToolStripMenuItem_Click);
             // 
@@ -611,9 +611,12 @@
             // 
             // compileToolStripMenuItem
             // 
+            this.compileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toEXEToolStripMenuItem,
+            this.generateCommandOnlyToolStripMenuItem});
             this.compileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("compileToolStripMenuItem.Image")));
             this.compileToolStripMenuItem.Name = "compileToolStripMenuItem";
-            this.compileToolStripMenuItem.Size = new System.Drawing.Size(313, 44);
+            this.compileToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.compileToolStripMenuItem.Text = "Compile";
             this.compileToolStripMenuItem.Click += new System.EventHandler(this.compileToolStripMenuItem_Click);
             // 
@@ -624,12 +627,78 @@
             this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(313, 44);
             this.projectSettingsToolStripMenuItem.Text = "Project Settings";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(16, 237);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(290, 45);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Open Output Directory";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // toEXEToolStripMenuItem
+            // 
+            this.toEXEToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("toEXEToolStripMenuItem.Image")));
+            this.toEXEToolStripMenuItem.Name = "toEXEToolStripMenuItem";
+            this.toEXEToolStripMenuItem.Size = new System.Drawing.Size(419, 44);
+            this.toEXEToolStripMenuItem.Text = "To EXE";
+            // 
+            // generateCommandOnlyToolStripMenuItem
+            // 
+            this.generateCommandOnlyToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("generateCommandOnlyToolStripMenuItem.Image")));
+            this.generateCommandOnlyToolStripMenuItem.Name = "generateCommandOnlyToolStripMenuItem";
+            this.generateCommandOnlyToolStripMenuItem.Size = new System.Drawing.Size(419, 44);
+            this.generateCommandOnlyToolStripMenuItem.Text = "Generate Command Only";
+            this.generateCommandOnlyToolStripMenuItem.Click += new System.EventHandler(this.generateCommandOnlyToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem,
+            this.reportABugToolStripMenuItem,
+            this.whatsNewToolStripMenuItem,
+            this.helpToolStripMenuItem1});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(84, 36);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // reportABugToolStripMenuItem
+            // 
+            this.reportABugToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportABugToolStripMenuItem.Image")));
+            this.reportABugToolStripMenuItem.Name = "reportABugToolStripMenuItem";
+            this.reportABugToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.reportABugToolStripMenuItem.Text = "Report a Bug";
+            this.reportABugToolStripMenuItem.Click += new System.EventHandler(this.reportABugToolStripMenuItem_Click);
+            // 
+            // whatsNewToolStripMenuItem
+            // 
+            this.whatsNewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("whatsNewToolStripMenuItem.Image")));
+            this.whatsNewToolStripMenuItem.Name = "whatsNewToolStripMenuItem";
+            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.whatsNewToolStripMenuItem.Text = "What\'s New?";
+            this.whatsNewToolStripMenuItem.Click += new System.EventHandler(this.whatsNewToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem1
+            // 
+            this.helpToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripMenuItem1.Image")));
+            this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(359, 44);
+            this.helpToolStripMenuItem1.Text = "Help";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 950);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(765, 913);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -663,7 +732,6 @@
         public System.Windows.Forms.TabPage tabPage1;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.TabControl tabControl1;
-        public System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.MenuStrip menuStrip1;
         public System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -714,6 +782,14 @@
         public System.Windows.Forms.Label label13;
         public System.Windows.Forms.Label label12;
         public System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ToolStripMenuItem toEXEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generateCommandOnlyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportABugToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem whatsNewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
     }
 }
 
