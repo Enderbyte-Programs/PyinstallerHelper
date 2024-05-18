@@ -63,18 +63,7 @@ namespace PyinstallerHelper
 
         private void compileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CompileForm cf = new CompileForm();
-            string td = Routines.GenerateNewTempdir();
-            try
-            {
-                
-                cf.ToBuild = BuildCompileCommand(td);
-                cf.tempdir = td;
-            } catch
-            {
-                return;
-            }
-            cf.ShowDialog();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -359,6 +348,40 @@ namespace PyinstallerHelper
         private void reportABugToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/Enderbyte-Programs/PyinstallerHelper/issues/new/choose");
+        }
+
+        private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "/docs/index.html");
+            } catch
+            {
+                try
+                {
+                    Process.Start(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "/../../docs/index.html");
+                } catch
+                {
+                    MessageBox.Show("Can't find docs!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void toEXEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CompileForm cf = new CompileForm();
+            string td = Routines.GenerateNewTempdir();
+            try
+            {
+
+                cf.ToBuild = BuildCompileCommand(td);
+                cf.tempdir = td;
+            }
+            catch
+            {
+                return;
+            }
+            cf.ShowDialog();
         }
     }
 }

@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Pyinstaller Helper"
-#define MyAppVersion "1.4.1"
+#define MyAppVersion "1.5.1"
 #define MyAppPublisher "Enderbyte Programs"
 #define MyAppURL "https://github.com/Enderbyte-Programs/Pyinstallerhelper"
 #define MyAppExeName "PyinstallerHelper.exe"
@@ -28,7 +28,7 @@ DisableProgramGroupPage=yes
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=commandline
 OutputDir=C:\Users\jorda\source\repos\PyinstallerHelper
-OutputBaseFilename=pyinstallerhelper-1.4.1-setup
+OutputBaseFilename=pyinstallerhelper-1.5.1-setup
 SetupIconFile=C:\Users\jorda\source\repos\PyinstallerHelper\1215332-removebg-preview.ico
 Compression=zip
 ;SolidCompression=yes
@@ -39,11 +39,12 @@ UninstallDisplayIcon={app}\PyinstallerHelper.exe
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}";
 
 [Files]
 Source: "C:\Users\jorda\source\repos\PyinstallerHelper\bin\Debug\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\jorda\source\repos\PyinstallerHelper\1215332-removebg-preview.ico"; DestDir: "{app}"; Flags: ignoreversion
+ Source: "C:\Users\jorda\source\repos\PyinstallerHelper\docs\*"; DestDir: "{app}\docs"; Flags: ignoreversion recursesubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]

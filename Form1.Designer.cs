@@ -520,7 +520,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(765, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(765, 42);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -533,7 +533,7 @@
             this.saveAsToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(71, 36);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(71, 38);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newToolStripMenuItem
@@ -582,21 +582,21 @@
             this.pythonToolStripMenuItem,
             this.pyinstallerToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(118, 36);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(118, 38);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
             // pythonToolStripMenuItem
             // 
             this.pythonToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pythonToolStripMenuItem.Image")));
             this.pythonToolStripMenuItem.Name = "pythonToolStripMenuItem";
-            this.pythonToolStripMenuItem.Size = new System.Drawing.Size(255, 44);
+            this.pythonToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.pythonToolStripMenuItem.Text = "Python";
             // 
             // pyinstallerToolStripMenuItem
             // 
             this.pyinstallerToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pyinstallerToolStripMenuItem.Image")));
             this.pyinstallerToolStripMenuItem.Name = "pyinstallerToolStripMenuItem";
-            this.pyinstallerToolStripMenuItem.Size = new System.Drawing.Size(255, 44);
+            this.pyinstallerToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.pyinstallerToolStripMenuItem.Text = "Pyinstaller";
             this.pyinstallerToolStripMenuItem.Click += new System.EventHandler(this.pyinstallerToolStripMenuItem_Click);
             // 
@@ -624,7 +624,7 @@
             // 
             this.projectSettingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("projectSettingsToolStripMenuItem.Image")));
             this.projectSettingsToolStripMenuItem.Name = "projectSettingsToolStripMenuItem";
-            this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(313, 44);
+            this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.projectSettingsToolStripMenuItem.Text = "Project Settings";
             // 
             // button4
@@ -643,6 +643,7 @@
             this.toEXEToolStripMenuItem.Name = "toEXEToolStripMenuItem";
             this.toEXEToolStripMenuItem.Size = new System.Drawing.Size(419, 44);
             this.toEXEToolStripMenuItem.Text = "To EXE";
+            this.toEXEToolStripMenuItem.Click += new System.EventHandler(this.toEXEToolStripMenuItem_Click);
             // 
             // generateCommandOnlyToolStripMenuItem
             // 
@@ -660,7 +661,7 @@
             this.whatsNewToolStripMenuItem,
             this.helpToolStripMenuItem1});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(84, 36);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(84, 38);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
@@ -693,6 +694,7 @@
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(359, 44);
             this.helpToolStripMenuItem1.Text = "Help";
+            this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 
             // Form1
             // 
