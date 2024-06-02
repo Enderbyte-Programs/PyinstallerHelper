@@ -53,11 +53,27 @@ namespace PyinstallerHelper
         {
             this.MaximizeBox = false;
             this.textBox3.Text = Constants.DistPath;
-            
+            if (RuntimeConfiguration.AutomatedBuild)
+            {
+                toEXEToolStripMenuItem_Click(new { }, new EventArgs());//Blank items for trickery
+                Environment.Exit(0);
+            }
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (pinfo.NeedsSaving(this))
+            {
+                var d = MessageBox.Show("Unsaved project. Would you like to save?", "Question", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                if (d == DialogResult.Yes)
+                {
+                    File.WriteAllText(pinfo.FullPath, new PyinstallerHelperProject(this).OutToXML());
+                }
+                else if (d == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
             Environment.Exit(0);
         }
 

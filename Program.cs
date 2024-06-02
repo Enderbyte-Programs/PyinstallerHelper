@@ -33,9 +33,20 @@ namespace PyinstallerHelper
             if (args.Length > 0)
             {
                 Routines.main.LoadFile(args[0]);
+                RuntimeConfiguration.InFile = args[0];
+            }
+            if (args.Contains("-a"))
+            {
+                RuntimeConfiguration.AutomatedBuild = true;
             }
             Application.Run(Routines.main);
         }
+    }
+
+    public static class RuntimeConfiguration
+    {
+        public static bool AutomatedBuild = false;
+        public static string InFile;
     }
     public static class Routines
     {

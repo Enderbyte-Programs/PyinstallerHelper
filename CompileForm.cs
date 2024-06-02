@@ -113,6 +113,10 @@ namespace PyinstallerHelper
                 MessageBox.Show("Error compiling: Please check log", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else
             {
+                if (RuntimeConfiguration.AutomatedBuild)
+                {
+                    this.Close();
+                }
                 MessageBox.Show("Completed successfully!","Report",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
         }
