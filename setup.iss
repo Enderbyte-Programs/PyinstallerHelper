@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Pyinstaller Helper"
-#define MyAppVersion "1.5.1"
+#define MyAppVersion "1.7"
 #define MyAppPublisher "Enderbyte Programs"
 #define MyAppURL "https://github.com/Enderbyte-Programs/Pyinstallerhelper"
 #define MyAppExeName "PyinstallerHelper.exe"
@@ -28,7 +28,7 @@ DisableProgramGroupPage=yes
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=commandline
 OutputDir=C:\Users\jorda\source\repos\PyinstallerHelper
-OutputBaseFilename=pyinstallerhelper-1.5.1-setup
+OutputBaseFilename=pyinstallerhelper-1.7-setup
 SetupIconFile=C:\Users\jorda\source\repos\PyinstallerHelper\1215332-removebg-preview.ico
 Compression=zip
 ;SolidCompression=yes

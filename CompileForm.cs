@@ -72,7 +72,7 @@ namespace PyinstallerHelper
         {
             Process p = new Process();
             var slp = CLISplit.SplitCommandLine(ToBuild).ToList();
-            p.StartInfo.FileName = "pyinstaller";
+            p.StartInfo.FileName = RuntimeConfiguration.c.PyinstallerPath;
             p.StartInfo.Arguments = String.Join(" ",slp.GetRange(1,slp.Count-1));
 
             p.StartInfo.UseShellExecute = false;

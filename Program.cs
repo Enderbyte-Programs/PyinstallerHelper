@@ -39,6 +39,7 @@ namespace PyinstallerHelper
             {
                 RuntimeConfiguration.AutomatedBuild = true;
             }
+            RuntimeConfiguration.c = ApplicationConfiguration.FromFile(Constants.SettingsPath);
             Application.Run(Routines.main);
         }
     }
@@ -47,6 +48,39 @@ namespace PyinstallerHelper
     {
         public static bool AutomatedBuild = false;
         public static string InFile;
+        public static ApplicationConfiguration c;
+    }
+    public class ApplicationConfiguration
+    {
+        public string PyinstallerPath = "pyinstaller";
+        public ApplicationConfiguration() { }
+        public string OutToXML()
+        {
+            XmlSerializer xml = new XmlSerializer(typeof(ApplicationConfiguration));
+            Utf8StringWriter sw = new Utf8StringWriter();
+            xml.Serialize(sw, this);
+            return sw.ToString();
+        }
+        public static ApplicationConfiguration FromFile(string path)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(ApplicationConfiguration));
+
+            ApplicationConfiguration a = new ApplicationConfiguration();
+            try
+            {
+                var fs = new FileStream(path, FileMode.Open);
+                a = (ApplicationConfiguration)serializer.Deserialize(fs);
+                fs.Close();
+            } catch {
+                a.WriteTo(path);//Write default values
+            }
+            return a;
+        }
+        public void WriteTo(string path)
+        { 
+            File.WriteAllText(path,OutToXML());
+        }
+
     }
     public static class Routines
     {
@@ -253,6 +287,7 @@ namespace PyinstallerHelper
     public static class Constants
     {
         public static string AppDataPath = Environment.ExpandEnvironmentVariables("%APPDATA%\\PyinstallerHelper");
+        public static string SettingsPath = AppDataPath + "\\config.xml";
         public static string DistPath = Environment.ExpandEnvironmentVariables(AppDataPath+"\\dist");
         public static string VersionFileTemplate = @"# UTF-8
 #

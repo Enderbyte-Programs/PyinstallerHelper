@@ -21,6 +21,8 @@ namespace PyinstallerHelper
 
         private void button1_Click(object sender, EventArgs e)
         {
+            RuntimeConfiguration.c.PyinstallerPath = textBox1.Text;
+            RuntimeConfiguration.c.WriteTo(Constants.SettingsPath);
             this.Close();
         }
 
@@ -37,37 +39,39 @@ namespace PyinstallerHelper
             }
             else
             {
-                textBox1.Text += ofd.FileName;
+                textBox1.Text = ofd.FileName;
             }
         }
 
         private void PyinstallerSetting_Load(object sender, EventArgs e)
         {
-            textBox1.Text = Routines.GetFullPath("pyinstaller.exe");
-            if (!Routines.ExistsOnPath("pyinstaller.exe"))
+            textBox1.Text = RuntimeConfiguration.c.PyinstallerPath;
+            if (textBox1.Text == "pyinstaller")
             {
-                label3.Text = "Pyinstaller not found";
-                label3.ForeColor = Color.Red;
+                textBox1.Text = Routines.GetFullPath("pyinstaller.exe");
+                if (!Routines.ExistsOnPath("pyinstaller.exe"))
+                {
+                    label3.Text = "Pyinstaller not found";
+                    label3.ForeColor = Color.Red;
+                }
             }
-            else
-            {
                 Process p = new Process()
                 {
                     StartInfo =
                     {
-                        FileName = "pyinstaller.exe",
+                        FileName = RuntimeConfiguration.c.PyinstallerPath,
                         Arguments = "--version",
                         CreateNoWindow = true,
                         UseShellExecute = false,
                         RedirectStandardError = true,
                         RedirectStandardOutput = true,
                     },
-                    
+
                 };
                 p.Start();
                 p.WaitForExit();
                 label3.Text = $"Pyinstaller Version: {p.StandardOutput.ReadToEnd()}{p.StandardError.ReadToEnd()}";
-            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)

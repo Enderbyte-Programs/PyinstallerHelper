@@ -74,7 +74,13 @@ namespace PyinstallerHelper
                     return;
                 }
             }
-            Environment.Exit(0);
+            try
+            {
+                this.Close();
+                Environment.Exit(0);
+            }
+            catch { }
+           
         }
 
         private void compileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -115,7 +121,7 @@ namespace PyinstallerHelper
         }
         public string BuildCompileCommand(string tempdir)
         {
-            string command = $"pyinstaller --log-level=INFO --noconfirm --workpath={tempdir} --distpath=\"{textBox3.Text}\" --specpath={tempdir}";
+            string command = $"{RuntimeConfiguration.c.PyinstallerPath} --log-level=INFO --noconfirm --workpath={tempdir} --distpath=\"{textBox3.Text}\" --specpath={tempdir}";
             if (!File.Exists(textBox1.Text))
             {
                 MessageBox.Show("You must specify a Python file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

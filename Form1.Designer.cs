@@ -50,6 +50,7 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -82,10 +83,9 @@
             this.pyinstallerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button4 = new System.Windows.Forms.Button();
             this.toEXEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateCommandOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportABugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -309,6 +309,16 @@
             this.panel3.Size = new System.Drawing.Size(729, 299);
             this.panel3.TabIndex = 6;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(16, 237);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(290, 45);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Open Output Directory";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(16, 99);
@@ -520,7 +530,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(765, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(765, 40);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -533,7 +543,7 @@
             this.saveAsToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(71, 38);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(71, 36);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newToolStripMenuItem
@@ -582,7 +592,7 @@
             this.pythonToolStripMenuItem,
             this.pyinstallerToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(118, 38);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(118, 36);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
             // pythonToolStripMenuItem
@@ -597,7 +607,7 @@
             this.pyinstallerToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pyinstallerToolStripMenuItem.Image")));
             this.pyinstallerToolStripMenuItem.Name = "pyinstallerToolStripMenuItem";
             this.pyinstallerToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
-            this.pyinstallerToolStripMenuItem.Text = "Pyinstaller";
+            this.pyinstallerToolStripMenuItem.Text = "Pyinstaller Settings";
             this.pyinstallerToolStripMenuItem.Click += new System.EventHandler(this.pyinstallerToolStripMenuItem_Click);
             // 
             // projectToolStripMenuItem
@@ -606,7 +616,7 @@
             this.compileToolStripMenuItem,
             this.projectSettingsToolStripMenuItem});
             this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
-            this.projectToolStripMenuItem.Size = new System.Drawing.Size(107, 38);
+            this.projectToolStripMenuItem.Size = new System.Drawing.Size(107, 36);
             this.projectToolStripMenuItem.Text = "Project";
             // 
             // compileToolStripMenuItem
@@ -616,26 +626,9 @@
             this.generateCommandOnlyToolStripMenuItem});
             this.compileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("compileToolStripMenuItem.Image")));
             this.compileToolStripMenuItem.Name = "compileToolStripMenuItem";
-            this.compileToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.compileToolStripMenuItem.Size = new System.Drawing.Size(313, 44);
             this.compileToolStripMenuItem.Text = "Compile";
             this.compileToolStripMenuItem.Click += new System.EventHandler(this.compileToolStripMenuItem_Click);
-            // 
-            // projectSettingsToolStripMenuItem
-            // 
-            this.projectSettingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("projectSettingsToolStripMenuItem.Image")));
-            this.projectSettingsToolStripMenuItem.Name = "projectSettingsToolStripMenuItem";
-            this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
-            this.projectSettingsToolStripMenuItem.Text = "Project Settings";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(16, 237);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(290, 45);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Open Output Directory";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // toEXEToolStripMenuItem
             // 
@@ -653,6 +646,13 @@
             this.generateCommandOnlyToolStripMenuItem.Text = "Generate Command Only";
             this.generateCommandOnlyToolStripMenuItem.Click += new System.EventHandler(this.generateCommandOnlyToolStripMenuItem_Click);
             // 
+            // projectSettingsToolStripMenuItem
+            // 
+            this.projectSettingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("projectSettingsToolStripMenuItem.Image")));
+            this.projectSettingsToolStripMenuItem.Name = "projectSettingsToolStripMenuItem";
+            this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(313, 44);
+            this.projectSettingsToolStripMenuItem.Text = "Project Settings";
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -661,14 +661,14 @@
             this.whatsNewToolStripMenuItem,
             this.helpToolStripMenuItem1});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(84, 38);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(84, 36);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(285, 44);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -676,7 +676,7 @@
             // 
             this.reportABugToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportABugToolStripMenuItem.Image")));
             this.reportABugToolStripMenuItem.Name = "reportABugToolStripMenuItem";
-            this.reportABugToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.reportABugToolStripMenuItem.Size = new System.Drawing.Size(285, 44);
             this.reportABugToolStripMenuItem.Text = "Report a Bug";
             this.reportABugToolStripMenuItem.Click += new System.EventHandler(this.reportABugToolStripMenuItem_Click);
             // 
@@ -684,7 +684,7 @@
             // 
             this.whatsNewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("whatsNewToolStripMenuItem.Image")));
             this.whatsNewToolStripMenuItem.Name = "whatsNewToolStripMenuItem";
-            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(285, 44);
             this.whatsNewToolStripMenuItem.Text = "What\'s New?";
             this.whatsNewToolStripMenuItem.Click += new System.EventHandler(this.whatsNewToolStripMenuItem_Click);
             // 
@@ -692,7 +692,7 @@
             // 
             this.helpToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripMenuItem1.Image")));
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(359, 44);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(285, 44);
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 
