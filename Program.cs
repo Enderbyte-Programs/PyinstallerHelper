@@ -179,6 +179,7 @@ namespace PyinstallerHelper
         public string OriginalFilename;
         public string AppName;
         public string ProductVersion;
+        public bool RequireAdmin;
         public PyinstallerHelperProject(Form1 inputformsettings)
         {
             HideConsole = inputformsettings.radioButton2.Checked;
@@ -203,6 +204,7 @@ namespace PyinstallerHelper
                 AppName  = inputformsettings.textBox10.Text;
                 ProductVersion = inputformsettings.textBox11.Text;
             }
+            RequireAdmin = inputformsettings.checkBox3.Checked;
         }
         public PyinstallerHelperProject() { }//Will this fix XML problem?
         public string OutToXML ()
@@ -240,6 +242,7 @@ namespace PyinstallerHelper
                 f.textBox10.Text = AppName;
                 f.textBox11.Text = ProductVersion;
             }
+            f.checkBox3.Checked = RequireAdmin;
         }
     }
     public class PYIHPWrapper

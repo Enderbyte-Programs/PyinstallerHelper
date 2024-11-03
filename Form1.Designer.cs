@@ -50,6 +50,7 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -79,13 +80,11 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pythonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pyinstallerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toEXEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateCommandOnlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.projectSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportABugToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -298,6 +297,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.checkBox3);
             this.panel3.Controls.Add(this.button4);
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.label6);
@@ -308,6 +308,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(729, 299);
             this.panel3.TabIndex = 6;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(9, 148);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(353, 29);
+            this.checkBox3.TabIndex = 6;
+            this.checkBox3.Text = "Require Administrative Priviliges";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // button4
             // 
@@ -321,7 +332,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(16, 99);
+            this.button3.Location = new System.Drawing.Point(9, 85);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(130, 57);
             this.button3.TabIndex = 4;
@@ -332,7 +343,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(345, 85);
+            this.label6.Location = new System.Drawing.Point(353, 57);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(168, 25);
             this.label6.TabIndex = 3;
@@ -340,7 +351,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(149, 112);
+            this.textBox3.Location = new System.Drawing.Point(145, 85);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(579, 31);
             this.textBox3.TabIndex = 2;
@@ -360,7 +371,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(390, 24);
+            this.label5.Location = new System.Drawing.Point(389, 20);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(156, 25);
             this.label5.TabIndex = 0;
@@ -589,18 +600,10 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pythonToolStripMenuItem,
             this.pyinstallerToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(118, 36);
             this.optionsToolStripMenuItem.Text = "Options";
-            // 
-            // pythonToolStripMenuItem
-            // 
-            this.pythonToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pythonToolStripMenuItem.Image")));
-            this.pythonToolStripMenuItem.Name = "pythonToolStripMenuItem";
-            this.pythonToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
-            this.pythonToolStripMenuItem.Text = "Python";
             // 
             // pyinstallerToolStripMenuItem
             // 
@@ -613,8 +616,7 @@
             // projectToolStripMenuItem
             // 
             this.projectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.compileToolStripMenuItem,
-            this.projectSettingsToolStripMenuItem});
+            this.compileToolStripMenuItem});
             this.projectToolStripMenuItem.Name = "projectToolStripMenuItem";
             this.projectToolStripMenuItem.Size = new System.Drawing.Size(107, 36);
             this.projectToolStripMenuItem.Text = "Project";
@@ -626,7 +628,7 @@
             this.generateCommandOnlyToolStripMenuItem});
             this.compileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("compileToolStripMenuItem.Image")));
             this.compileToolStripMenuItem.Name = "compileToolStripMenuItem";
-            this.compileToolStripMenuItem.Size = new System.Drawing.Size(313, 44);
+            this.compileToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.compileToolStripMenuItem.Text = "Compile";
             this.compileToolStripMenuItem.Click += new System.EventHandler(this.compileToolStripMenuItem_Click);
             // 
@@ -646,13 +648,6 @@
             this.generateCommandOnlyToolStripMenuItem.Text = "Generate Command Only";
             this.generateCommandOnlyToolStripMenuItem.Click += new System.EventHandler(this.generateCommandOnlyToolStripMenuItem_Click);
             // 
-            // projectSettingsToolStripMenuItem
-            // 
-            this.projectSettingsToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("projectSettingsToolStripMenuItem.Image")));
-            this.projectSettingsToolStripMenuItem.Name = "projectSettingsToolStripMenuItem";
-            this.projectSettingsToolStripMenuItem.Size = new System.Drawing.Size(313, 44);
-            this.projectSettingsToolStripMenuItem.Text = "Project Settings";
-            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -668,7 +663,7 @@
             // 
             this.aboutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripMenuItem.Image")));
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(285, 44);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -676,7 +671,7 @@
             // 
             this.reportABugToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("reportABugToolStripMenuItem.Image")));
             this.reportABugToolStripMenuItem.Name = "reportABugToolStripMenuItem";
-            this.reportABugToolStripMenuItem.Size = new System.Drawing.Size(285, 44);
+            this.reportABugToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.reportABugToolStripMenuItem.Text = "Report a Bug";
             this.reportABugToolStripMenuItem.Click += new System.EventHandler(this.reportABugToolStripMenuItem_Click);
             // 
@@ -684,7 +679,7 @@
             // 
             this.whatsNewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("whatsNewToolStripMenuItem.Image")));
             this.whatsNewToolStripMenuItem.Name = "whatsNewToolStripMenuItem";
-            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(285, 44);
+            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
             this.whatsNewToolStripMenuItem.Text = "What\'s New?";
             this.whatsNewToolStripMenuItem.Click += new System.EventHandler(this.whatsNewToolStripMenuItem_Click);
             // 
@@ -692,7 +687,7 @@
             // 
             this.helpToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("helpToolStripMenuItem1.Image")));
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(285, 44);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(359, 44);
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 
@@ -763,9 +758,7 @@
         public System.Windows.Forms.CheckBox checkBox1;
         public System.Windows.Forms.Button button3;
         public System.Windows.Forms.Label label6;
-        public System.Windows.Forms.ToolStripMenuItem pythonToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem pyinstallerToolStripMenuItem;
-        public System.Windows.Forms.ToolStripMenuItem projectSettingsToolStripMenuItem;
         public System.Windows.Forms.CheckBox checkBox2;
         public System.Windows.Forms.Label label7;
         public System.Windows.Forms.TextBox textBox11;
@@ -792,6 +785,7 @@
         private System.Windows.Forms.ToolStripMenuItem reportABugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem whatsNewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
+        public System.Windows.Forms.CheckBox checkBox3;
     }
 }
 

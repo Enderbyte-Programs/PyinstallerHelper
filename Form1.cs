@@ -136,6 +136,10 @@ namespace PyinstallerHelper
             {
                 command += " --icon=NONE";
             }
+            if (checkBox3.Checked)
+            {
+                command += "--uac-admin";
+            }
             if (radioButton5.Checked)
             {
                 if (File.Exists(textBox2.Text))
@@ -364,7 +368,7 @@ namespace PyinstallerHelper
 
         private void whatsNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"What's New this version?\n- Fix bug where everything is unsaved\n- Add button to open output directory\n- Add option to generate command only");
+            MessageBox.Show($"What's New this version?\n- Add option to make the output file as admin only.\n- Update documentation");
         }
 
         private void reportABugToolStripMenuItem_Click(object sender, EventArgs e)
@@ -374,19 +378,7 @@ namespace PyinstallerHelper
 
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Process.Start(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "/docs/index.html");
-            } catch
-            {
-                try
-                {
-                    Process.Start(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "/../../docs/index.html");
-                } catch
-                {
-                    MessageBox.Show("Can't find docs!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            Process.Start("https://enderbyteprograms.net/apps/desktopsoftware/pyih.html#docx");
         }
 
         private void toEXEToolStripMenuItem_Click(object sender, EventArgs e)
@@ -404,6 +396,11 @@ namespace PyinstallerHelper
                 return;
             }
             cf.ShowDialog();
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

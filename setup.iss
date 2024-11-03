@@ -2,9 +2,9 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Pyinstaller Helper"
-#define MyAppVersion "1.7"
+#define MyAppVersion "1.8"
 #define MyAppPublisher "Enderbyte Programs"
-#define MyAppURL "https://github.com/Enderbyte-Programs/Pyinstallerhelper"
+#define MyAppURL "https://enderbyteprograms.net/apps/desktopsoftware/pyih.html"
 #define MyAppExeName "PyinstallerHelper.exe"
 #define MyAppAssocName MyAppName + " Project"
 #define MyAppAssocExt ".pyp"
